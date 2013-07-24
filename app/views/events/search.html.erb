@@ -1,0 +1,58 @@
+<%= form_for(@event, method: 'get', url: 'search') do |f| %>
+
+    <div class="field">
+      <%= f.label :country %>
+      <br/>
+      <%= f.text_field :country %>
+    </div>
+    <div class="field">
+      <%= f.label :locality %>
+      <br/>
+      <%= f.text_field :locality %>
+    </div>
+    <div class="field">
+      <%= label_tag :start_date %>
+      <br/>
+      <%= date_select :start_date, :start_date, {include_blank: true} %>
+    </div>
+    <div class="field">
+      <%= label_tag :end_date %>
+      <br/>
+      <%= date_select :end_date, :end_date, {include_blank: true} %>
+    </div>
+
+    <select name=tags[] multiple>
+      <% @tags.each do |tag| %>
+          <option value="<%= tag.id %>"><%= tag.label %></option>
+      <% end %>
+    </select>
+
+    <div class="actions">
+      <br>
+      <%= f.submit 'Search Event' %>
+    </div>
+<% end %>
+<br>
+<h1>Listing found events</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Country</th>
+    <th>Locality</th>
+    <th>Date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @results.each do |event| %>
+      <tr>
+        <td><%= event.title %></td>
+        <td><%= event.country %></td>
+        <td><%= event.locality %></td>
+        <td><%= event.date %></td>
+      </tr>
+  <% end %>
+</table>
+
