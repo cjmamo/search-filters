@@ -9,3 +9,4 @@
 Tag.create!([{label: 'software'}, {label: 'open source'}])
 
 Event.create!({title: 'Open Source Software Conference', country: 'Malta', locality: 'Valletta', date: '2013-01-01', tags: [Tag.find_by_label('software'), Tag.find_by_label('open source')]})
+Event.create!({title: 'Startup Weekend', country: 'Malta', locality: 'Smart City', date: '2013-04-06', tags: [Tag.find_by_label('software')]})
